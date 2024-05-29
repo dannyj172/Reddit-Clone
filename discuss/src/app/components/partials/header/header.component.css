@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Jersey+25&display=swap");
 
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+}
+
 .container ul {
   list-style: none;
 }
@@ -55,7 +62,7 @@
   align-self: center;
   color: white;
   font-family: "Jersey 25", sans-serif;
-  font-size: 30px;
+  font-size: 34px;
   margin-left: 7px;
 }
 
@@ -65,11 +72,11 @@ nav ul {
 }
 
 nav ul li {
-  margin: 10px 10px 0 10px;
+  margin: 0 10px 0 10px;
   align-self: center;
 }
 
-nav ul li:nth-child(1) a {
+.login-button {
   background-color: #7139b1;
   border-radius: 10%;
   padding: 10px 15px;
@@ -77,11 +84,100 @@ nav ul li:nth-child(1) a {
   opacity: 100%;
 }
 
-nav ul li:nth-child(1) a:hover {
+.login-button:hover {
   opacity: 90%;
 }
 
 nav a {
   text-decoration: none;
   color: white;
+}
+
+.create-button {
+  display: flex;
+  color: white;
+  align-items: center;
+  cursor: pointer;
+  height: 40px;
+  padding: 0 15px 0 10px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.create-button p {
+  font-size: 15px;
+}
+
+.create-button svg {
+  margin-right: 5px;
+}
+
+.create-button:hover {
+  background-color: #343d42;
+}
+
+.more-options {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  box-sizing: content-box;
+  padding: 10px;
+  margin: 0px;
+  border-radius: 50%;
+}
+
+.more-options:hover {
+  background-color: #343d42;
+}
+
+.input-container {
+  height: fit-content;
+  width: 600px;
+  display: flex;
+  position: relative;
+  align-self: center;
+  outline: none;
+  background-color: #343d42a6;
+  padding: 8px 10px;
+  border-radius: 20px/50%;
+}
+
+.input-container svg {
+  align-self: center;
+  color: white;
+}
+
+.input {
+  width: 550px;
+  background: none;
+  border: none;
+  caret-color: white;
+  color: #9ab0b6;
+}
+
+.input-container:hover {
+  background-color: #343d42;
+}
+
+.input:active {
+  background-color: #343d42;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input:focus ~ .input-label {
+  display: none;
+}
+
+.input-label {
+  position: absolute;
+  top: 12px;
+  left: 36px;
+  color: #9ab0b6;
+  pointer-events: none;
+  font-size: 14px;
 }
