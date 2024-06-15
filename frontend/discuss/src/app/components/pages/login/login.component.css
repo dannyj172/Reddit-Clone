@@ -5,6 +5,7 @@
   color: white;
   background-color: #172025;
   border-radius: 20px;
+  border: 1px solid rgba(218, 217, 217, 0.205);
 }
 
 .details {

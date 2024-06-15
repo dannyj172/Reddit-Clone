@@ -134,13 +134,12 @@ ul li .interact {
 
 ul li .interact-box {
   display: flex;
-  background-color: #343d42;
+  background-color: #363f44c5;
   align-items: center;
   justify-content: center;
   margin-right: 20px;
-  padding: 8px 12px;
   border-radius: 20px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
 }
 
@@ -149,25 +148,30 @@ ul li .interact-box span {
 }
 
 ul li .interact-box svg {
-  font-size: 22px;
+  font-size: 32px;
+  padding: 5px;
+  /* padding: 8px 12px; */
 }
 
-.comment {
-  font-size: 16px;
-  margin-right: 5px;
+ul li .comments-link {
+  padding: 0 5px;
 }
 
 .upvote:hover {
   color: rgb(255, 81, 0);
   cursor: pointer;
+  border-radius: 50%;
+  background-color: #363f44;
 }
 
 .downvote:hover {
-  color: rgb(58, 31, 177);
+  color: rgb(48, 97, 202);
   cursor: pointer;
+  background-color: #363f44;
+  border-radius: 50%;
 }
 
 ul li .comments-link:hover {
   cursor: pointer;
-  background-color: #414c52;
+  background-color: #363f44;
 }
