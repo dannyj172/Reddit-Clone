@@ -24,3 +24,60 @@ export const sample_posts: Post[] = [
     commentCount: 242,
   },
 ];
+
+export const sample_topics = [
+  {
+    id: '1',
+    topicName: 'Fashion',
+    banner: '',
+    postsAmount: 127,
+  },
+  {
+    id: '2',
+    topicName: 'Gaming',
+    banner: '',
+    postsAmount: 150,
+  },
+  {
+    id: '3',
+    topicName: 'Comedy',
+    banner: '',
+    postsAmount: 112,
+  },
+  {
+    id: '4',
+    topicName: 'Music',
+    banner: '',
+    postsAmount: 15,
+  },
+  {
+    id: '5',
+    topicName: 'Art',
+    banner: '',
+    postsAmount: 19,
+  },
+  {
+    id: '6',
+    topicName: 'Cinema',
+    banner: '',
+    postsAmount: 96,
+  },
+  {
+    id: '7',
+    topicName: 'Food',
+    banner: '',
+    postsAmount: 279,
+  },
+  {
+    id: '8',
+    topicName: 'News',
+    banner: '',
+    postsAmount: 115,
+  },
+  {
+    id: '9',
+    topicName: 'Technology',
+    banner: '',
+    postsAmount: 54,
+  },
+];

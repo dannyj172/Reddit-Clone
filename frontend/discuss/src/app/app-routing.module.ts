@@ -6,6 +6,7 @@ import { LoginComponent } from './components/pages/login/login.component';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { CreatePostComponent } from './components/pages/create-post/create-post.component';
 import { TopicComponent } from './components/pages/topic/topic.component';
+import { DiscussionsComponent } from './components/pages/discussions/discussions.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'create-post', component: CreatePostComponent },
   { path: 'topic', component: TopicComponent },
+  { path: 'discussions', component: DiscussionsComponent },
 ];
 
 @NgModule({

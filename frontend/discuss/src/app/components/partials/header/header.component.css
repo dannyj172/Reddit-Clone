@@ -48,13 +48,14 @@ header {
   );
   padding: 10px;
   border-radius: 50%;
+  border-bottom-right-radius: 20%;
 }
 
 .icon-container img {
   height: 100%;
   width: 30px;
-  -webkit-filter: invert(1);
-  filter: invert(1);
+  -webkit-filter: invert(1) blur(0.5px);
+  filter: invert(1) blur(0.5px);
 }
 
 .logo-text {

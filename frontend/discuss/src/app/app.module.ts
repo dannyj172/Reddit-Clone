@@ -11,6 +11,7 @@ import { LoginComponent } from './components/pages/login/login.component';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { CreatePostComponent } from './components/pages/create-post/create-post.component';
 import { TopicComponent } from './components/pages/topic/topic.component';
+import { DiscussionsComponent } from './components/pages/discussions/discussions.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { TopicComponent } from './components/pages/topic/topic.component';
     RegisterComponent,
     CreatePostComponent,
     TopicComponent,
+    DiscussionsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
