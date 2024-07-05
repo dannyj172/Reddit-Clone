@@ -12,8 +12,8 @@
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-            <input type="text" class="input" placeholder=" ">
-            <label for="" class="input-label">Search Discuss</label>
+            <input #s type="text" class="input" placeholder=" " (keyup.enter)="search(s.value)" [value]="searchTerm">
+            <label *ngIf="s" for="" class="input-label">Search Discuss</label>
         </div>
         <nav>
             <ul>

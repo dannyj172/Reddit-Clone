@@ -10,11 +10,12 @@ import { DiscussionsComponent } from './components/pages/discussions/discussions
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'post', component: PostComponent },
+  { path: 'search/:searchTerm', component: HomeComponent },
+  { path: 'post/:postId', component: PostComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'create-post', component: CreatePostComponent },
-  { path: 'topic', component: TopicComponent },
+  { path: 'topic/:topicName', component: TopicComponent },
   { path: 'discussions', component: DiscussionsComponent },
 ];
 

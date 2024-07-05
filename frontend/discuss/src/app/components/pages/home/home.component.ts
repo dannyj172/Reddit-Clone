@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PostService } from 'src/app/services/post.service';
 import { Post } from 'src/app/shared/models/Post';
 
@@ -10,7 +11,18 @@ import { Post } from 'src/app/shared/models/Post';
 export class HomeComponent {
   posts: Post[] = [];
 
-  constructor(private postService: PostService) {
-    this.posts = postService.getAll();
+  constructor(
+    private postService: PostService,
+    activatedRoute: ActivatedRoute
+  ) {
+    activatedRoute.params.subscribe((params) => {
+      if (params['searchTerm']) {
+        this.posts = this.postService.getAllPostsBySearchTerm(
+          params['searchTerm']
+        );
+      } else {
+        this.posts = postService.getAll();
+      }
+    });
   }
 }

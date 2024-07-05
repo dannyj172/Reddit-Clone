@@ -2,7 +2,7 @@
     <h4>Best of Discuss</h4>
     <div class="discussions-list">
         <ng-container *ngFor="let topic of topics; index as i">
-            <div class=" topic" routerLink="/topic">
+            <div class="topic" routerLink="/topic/{{topic.topicName}}">
                 <p class="topic-name">{{topic.topicName}}</p>
                 <p>{{topic.postsAmount}} posts</p>
             </div>

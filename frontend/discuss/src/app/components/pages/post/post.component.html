@@ -8,29 +8,29 @@
                         d="M12.707 17.293L8.414 13 18 13 18 11 8.414 11 12.707 6.707 11.293 5.293 4.586 12 11.293 18.707z">
                     </path>
                 </svg>
-                <p class="post-owner">Daniel</p>
+                <p class="post-owner">{{post.owner}}</p>
                 <svg class="dot" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16"
                     height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd">
                     </path>
                 </svg>
 
-                <p class="topic-name">Fashion</p>
+                <p routerLink="/topic/{{post.topic}}" class="topic-name">{{post.topic}}</p>
                 <svg class="dot" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16"
                     height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd">
                     </path>
                 </svg>
-                <span>1 hr. ago</span>
+                <span>{{post.createdAt}} hr. ago</span>
             </div>
             <div class="topic-right">
-                <svg class="more-options" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16"
-                    height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <svg (click)="optionsClick()" class="more-options" stroke="currentColor" fill="currentColor"
+                    stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
                         d="M3 9.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm5 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm5 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"
                         clip-rule="evenodd"></path>
                 </svg>
-                <div class="options">
+                <div class="options" *ngIf="showOptions">
                     <div class="edit-button">
                         <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1.5em"
                             width="1.5em" xmlns="http://www.w3.org/2000/svg">
@@ -53,18 +53,11 @@
                 </div>
             </div>
         </div>
-        <h2>Lowkey I could win the triple crown if I tried.</h2>
-        <p class="post-text">Hey guys, what's your favorite game of all time? I'm currently stuck on a decision
-            between The Last
-            of
-            Us
-            and Overwatch. Has anyone else played either of those? And what do you think makes them so great?
-        </p>
-        <div class="images">
-            <img class="blurred-image"
-                src="../../../../assets/low-key-i-could-win-the-triple-crown-if-i-tried-v0-0jou6vensz1d1.jpg" alt="">
-            <img class="main-image"
-                src="../../../../assets/low-key-i-could-win-the-triple-crown-if-i-tried-v0-0jou6vensz1d1.jpg" alt="">
+        <h2>{{post.title}}</h2>
+        <p *ngIf="post.description" class="post-text">{{post.description}}</p>
+        <div *ngIf="post.imageUrl" class="images">
+            <img class="blurred-image" src={{post.imageUrl}} alt="">
+            <img class="main-image" src={{post.imageUrl}} alt="">
         </div>
         <div class="interact">
             <div class="interact-box">
@@ -72,7 +65,7 @@
                     height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M5 3L0 9h3v4h4V9h3L5 3z"></path>
                 </svg>
-                <span>26</span>
+                <span>{{post.votes}}</span>
                 <svg class="downvote" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 10 16"
                     height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M7 7V3H3v4H0l5 6 5-6H7z"></path>
@@ -85,48 +78,28 @@
                         d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 7.1 5.8 12 12 12 2.4 0 4.9-.7 7.1-2.4L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64zm16 352c0 8.8-7.2 16-16 16H288l-12.8 9.6L208 428v-60H64c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16h384c8.8 0 16 7.2 16 16v288z">
                     </path>
                 </svg>
-                <span>127</span>
+                <span>{{post.commentCount}}</span>
             </div>
         </div>
     </div>
     <div class="input-container">
-        <!-- <input type="text" class="comment-field" placeholder=""> -->
         <textarea name="" id="" class="comment-field"></textarea>
         <label for="" class="input-label">Search Discuss</label>
         <button class="cancel-button">Cancel</button>
         <button class="comment-button">Comment</button>
     </div>
     <div class="comment-section">
-        <div class="comment">
+        <div *ngFor="let comment of post.comments" class="comment">
             <div class="comment-info">
-                <p>Daniel</p>
+                <p>{{comment.author}}</p>
                 <svg class="dot" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16"
                     height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd">
                     </path>
                 </svg>
-                <span>1h ago</span>
+                <span>{{comment.createdAt}}h ago</span>
             </div>
-            <p class="comment-text">Cool outfit! <br> I really like everything about it</p>
-        </div>
-        <div class="comment">
-            <div class="comment-info">
-                <p>Larry</p>
-                <svg class="dot" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16"
-                    height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd">
-                    </path>
-                </svg>
-                <span>3h ago</span>
-            </div>
-            <p class="comment-text">To be fair, I think you could count the number of people who understood the lore
-                from a single playthrough on 0 hands (it's 0).
-
-                Its great because it's hidden, it takes some unpicking, but the world feels all the more real for the
-                little hints you stumble on during your first playthrough.
-
-                I really do doubt that anybody figured out the underlying plot first time through though, and 99% of
-                players watch the mossbag (or similar) summary to understand it properly.</p>
+            <p class="comment-text">{{comment.text}}</p>
         </div>
     </div>
 </div>

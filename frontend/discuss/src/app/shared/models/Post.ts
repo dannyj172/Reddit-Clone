@@ -1,5 +1,7 @@
+import { Comment } from './Comment';
+
 export class Post {
-  id!: string;
+  postId!: string;
   owner!: string;
   topic!: string;
   createdAt!: string;
@@ -8,5 +10,5 @@ export class Post {
   imageUrl?: string;
   votes!: number;
   commentCount!: number;
-  //   comments!: commentmodelarray
+  comments!: Comment[];
 }

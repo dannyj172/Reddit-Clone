@@ -88,12 +88,12 @@
 }
 
 .topic-name:hover {
-  color: rgb(231, 231, 231);
+  color: #7face0;
   cursor: pointer;
 }
 
 .post-owner:hover {
-  color: rgb(231, 231, 231);
+  color: #7face0;
   cursor: pointer;
 }
 
@@ -119,6 +119,7 @@
   flex-direction: column;
   position: absolute;
   left: 1010px;
+  z-index: 999;
 }
 
 .edit-button,
