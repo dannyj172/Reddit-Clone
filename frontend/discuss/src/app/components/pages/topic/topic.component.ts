@@ -21,8 +21,16 @@ export class TopicComponent {
   ) {
     activatedRoute.params.subscribe((params) => {
       if (params['topicName'])
-        this.topic = topicService.getTopicByName(params['topicName']);
-      this.posts = postService.getAllPostsByTopicName(params['topicName']);
+        topicService
+          .getTopicByName(params['topicName'])
+          .subscribe((serverTopic) => {
+            this.topic = serverTopic;
+          });
+      postService
+        .getAllPostsByTopicName(params['topicName'])
+        .subscribe((serverPosts) => {
+          this.posts = serverPosts;
+        });
     });
   }
 }

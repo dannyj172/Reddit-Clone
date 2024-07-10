@@ -1,33 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Post } from '../shared/models/Post';
-import { sample_posts } from 'src/data';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import {
+  POST_BY_ID_URL,
+  POSTS_BY_SEARCH_URL,
+  POSTS_BY_TOPIC_URL,
+  POSTS_URL,
+} from '../shared/constants/urls';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  getAll(): Post[] {
-    return sample_posts;
+  getAll(): Observable<Post[]> {
+    return this.http.get<Post[]>(POSTS_URL);
   }
 
-  getAllPostsByTopicName(topicName: string): Post[] {
-    return this.getAll().filter((post) =>
-      post.topic.toLowerCase().includes(topicName.toLowerCase())
-    );
+  getAllPostsByTopicName(topicName: string): Observable<Post[]> {
+    return this.http.get<Post[]>(POSTS_BY_TOPIC_URL + topicName);
   }
 
-  getAllPostsBySearchTerm(searchTerm: string): Post[] {
-    return this.getAll().filter(
-      (post) =>
-        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        post.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        post.topic.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+  getAllPostsBySearchTerm(searchTerm: string): Observable<Post[]> {
+    return this.http.get<Post[]>(POSTS_BY_SEARCH_URL + searchTerm);
   }
 
-  getPostById(id: string): Post {
-    return this.getAll().find((post) => post.postId == id) ?? new Post();
+  getPostById(id: string): Observable<Post> {
+    return this.http.get<Post>(POST_BY_ID_URL + id);
   }
 }

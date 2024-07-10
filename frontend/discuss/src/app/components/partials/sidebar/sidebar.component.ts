@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,5 +7,18 @@ import { filter } from 'rxjs';
   styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent {
-  constructor(public router: Router) {}
+  resourcesOpen = false;
+  recentOpen = false;
+
+  constructor(public router: Router) {
+    console.log(this.router.url.includes('/discussions'));
+  }
+
+  openResources(): void {
+    this.resourcesOpen = !this.resourcesOpen;
+  }
+
+  openRecent(): void {
+    this.recentOpen = !this.recentOpen;
+  }
 }

@@ -7,6 +7,7 @@ import { RegisterComponent } from './components/pages/register/register.componen
 import { CreatePostComponent } from './components/pages/create-post/create-post.component';
 import { TopicComponent } from './components/pages/topic/topic.component';
 import { DiscussionsComponent } from './components/pages/discussions/discussions.component';
+import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'create-post', component: CreatePostComponent },
   { path: 'topic/:topicName', component: TopicComponent },
   { path: 'discussions', component: DiscussionsComponent },
+  { path: 'not-found', component: NotFoundComponent },
 ];
 
 @NgModule({

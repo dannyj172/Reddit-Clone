@@ -9,6 +9,5 @@ export class Post {
   description?: string;
   imageUrl?: string;
   votes!: number;
-  commentCount!: number;
   comments!: Comment[];
 }

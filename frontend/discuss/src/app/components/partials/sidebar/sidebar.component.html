@@ -1,6 +1,7 @@
-<aside *ngIf="!router.url.includes('discussions')" class="sidebar">
+<!-- <aside *ngIf="!(router.url.includes('discussions') || router.url.includes('not-found'))" class="sidebar"> -->
+<aside class="sidebar">
     <div class="links">
-        <div routerLink="" class="link-box active">
+        <div [ngClass]="{'active': router.url=='/'}" routerLink="" class="link-box">
             <svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.2" baseProfile="tiny"
                 viewBox="0 0 24 24" height="1.8em" width="1.8em" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -9,7 +10,7 @@
             </svg>
             <p>Home</p>
         </div>
-        <div routerLink="discussions" class="link-box">
+        <div [ngClass]="{'active': router.url.includes('discussions')}" routerLink="discussions" class="link-box">
             <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.8em"
                 width="1.8em" xmlns="http://www.w3.org/2000/svg">
                 <g>
@@ -31,31 +32,35 @@
         </div>
     </div>
     <div class="resources">
-        <div class="link-box dropdown">
+        <div class="link-box dropdown" (click)="openResources()">
             <h3>Resources</h3>
-            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em"
-                width="1em" xmlns="http://www.w3.org/2000/svg">
+            <svg [ngClass]="resourcesOpen ? 'opened' : 'closed'" stroke="currentColor" fill="currentColor"
+                stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M256 217.9L383 345c9.4 9.4 24.6 9.4 33.9 0 9.4-9.4 9.3-24.6 0-34L273 167c-9.1-9.1-23.7-9.3-33.1-.7L95 310.9c-4.7 4.7-7 10.9-7 17s2.3 12.3 7 17c9.4 9.4 24.6 9.4 33.9 0l127.1-127z">
                 </path>
             </svg>
         </div>
-        <a class="link-box" href="">About Discuss</a>
-        <a class="link-box" href="">Help</a>
-        <a class="link-box" href="">User Agreement</a>
+        <ng-container *ngIf="resourcesOpen">
+            <a class="link-box" href="">About Discuss</a>
+            <a class="link-box" href="">Help</a>
+            <a class="link-box" href="">User Agreement</a>
+        </ng-container>
     </div>
     <div class="recent">
-        <div class="link-box dropdown">
+        <div (click)="openRecent()" class="link-box dropdown">
             <h3>Recent</h3>
-            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em"
-                width="1em" xmlns="http://www.w3.org/2000/svg">
+            <svg [ngClass]="recentOpen ? 'opened' : 'closed'" stroke="currentColor" fill="currentColor" stroke-width="0"
+                viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M256 217.9L383 345c9.4 9.4 24.6 9.4 33.9 0 9.4-9.4 9.3-24.6 0-34L273 167c-9.1-9.1-23.7-9.3-33.1-.7L95 310.9c-4.7 4.7-7 10.9-7 17s2.3 12.3 7 17c9.4 9.4 24.6 9.4 33.9 0l127.1-127z">
                 </path>
             </svg>
         </div>
-        <a class="link-box" href="">Politics</a>
-        <a class="link-box" href="">Programming</a>
-        <a class="link-box" href="">Fashion</a>
+        <ng-container *ngIf="recentOpen">
+            <a class="link-box" href="">Politics</a>
+            <a class="link-box" href="">Programming</a>
+            <a class="link-box" href="">Fashion</a>
+        </ng-container>
     </div>
 </aside>

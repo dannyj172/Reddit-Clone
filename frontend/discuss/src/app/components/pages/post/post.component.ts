@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { PostService } from 'src/app/services/post.service';
 import { Post } from 'src/app/shared/models/Post';
 
@@ -18,7 +19,9 @@ export class PostComponent {
   ) {
     activatedRoute.params.subscribe((params) => {
       if (params['postId'])
-        this.post = postService.getPostById(params['postId']);
+        postService.getPostById(params['postId']).subscribe((serverPost) => {
+          this.post = serverPost;
+        });
     });
   }
 

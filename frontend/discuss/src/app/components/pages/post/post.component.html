@@ -78,7 +78,7 @@
                         d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 7.1 5.8 12 12 12 2.4 0 4.9-.7 7.1-2.4L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64zm16 352c0 8.8-7.2 16-16 16H288l-12.8 9.6L208 428v-60H64c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16h384c8.8 0 16 7.2 16 16v288z">
                     </path>
                 </svg>
-                <span>{{post.commentCount}}</span>
+                <span>{{post.comments.length}}</span>
             </div>
         </div>
     </div>
@@ -88,7 +88,7 @@
         <button class="cancel-button">Cancel</button>
         <button class="comment-button">Comment</button>
     </div>
-    <div class="comment-section">
+    <div *ngIf="post.comments.length" class="comment-section">
         <div *ngFor="let comment of post.comments" class="comment">
             <div class="comment-info">
                 <p>{{comment.author}}</p>
@@ -100,6 +100,14 @@
                 <span>{{comment.createdAt}}h ago</span>
             </div>
             <p class="comment-text">{{comment.text}}</p>
+        </div>
+    </div>
+    <div *ngIf="!post.comments.length" class="no-posts">
+        <div class="icon-container"></div>
+        <div class="no-posts-text">
+            <h1>Be the first to comment</h1>
+            <h2>Nobody has responded to this post yet.</h2>
+            <h2>Add your thoughts and get the discussion going.</h2>
         </div>
     </div>
 </div>

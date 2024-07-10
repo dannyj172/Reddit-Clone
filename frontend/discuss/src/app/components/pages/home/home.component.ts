@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { PostService } from 'src/app/services/post.service';
 import { Post } from 'src/app/shared/models/Post';
 
@@ -15,14 +16,19 @@ export class HomeComponent {
     private postService: PostService,
     activatedRoute: ActivatedRoute
   ) {
+    let postsObservable: Observable<Post[]>;
     activatedRoute.params.subscribe((params) => {
       if (params['searchTerm']) {
-        this.posts = this.postService.getAllPostsBySearchTerm(
+        postsObservable = this.postService.getAllPostsBySearchTerm(
           params['searchTerm']
         );
       } else {
-        this.posts = postService.getAll();
+        postsObservable = postService.getAll();
       }
+
+      postsObservable.subscribe((serverPosts) => {
+        this.posts = serverPosts;
+      });
     });
   }
 }

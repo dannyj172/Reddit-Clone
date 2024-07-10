@@ -99,6 +99,7 @@ ul {
 
 .topic-box p {
   font-weight: bold;
+  z-index: 999;
 }
 
 .topic-box p:hover {

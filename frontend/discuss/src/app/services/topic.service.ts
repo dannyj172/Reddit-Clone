@@ -1,26 +1,26 @@
 import { Injectable } from '@angular/core';
-import { sample_topics } from 'src/data';
 import { Topic } from '../shared/models/Topic';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { TOPIC_BY_TOPICNAME_URL, TOPICS_URL } from '../shared/constants/urls';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TopicService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  getAll(): Topic[] {
-    return sample_topics;
+  getAll(): Observable<Topic[]> {
+    return this.http.get<Topic[]>(TOPICS_URL);
   }
 
-  getAllTopicsBySearchTerm(searchTerm: string): Topic[] {
-    return this.getAll().filter((topic) =>
-      topic.topicName.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+  getTopicByName(topicName: string): Observable<Topic> {
+    return this.http.get<Topic>(TOPIC_BY_TOPICNAME_URL + topicName);
   }
 
-  getTopicByName(name: string): Topic {
-    return (
-      this.getAll().find((topic) => topic.topicName == name) ?? new Topic()
-    );
-  }
+  // getAllTopicsBySearchTerm(searchTerm: string): Topic[] {
+  //   return this.getAll().filter((topic) =>
+  //     topic.topicName.toLowerCase().includes(searchTerm.toLowerCase())
+  //   );
+  // }
 }

@@ -44,12 +44,13 @@ aside {
   color: white;
 }
 
-/* RESOURCES */
+/* RESOURCES AND RECENT */
 
 .resources,
 .recent {
   display: flex;
   flex-direction: column;
+  user-select: none;
 }
 
 .resources .link-box h3,
@@ -63,6 +64,16 @@ aside {
 .recent .dropdown {
   justify-content: space-between;
   padding: 0 10px;
+}
+
+.opened {
+  transition: 0.2s;
+  transform: rotate(180deg);
+}
+
+.closed {
+  transition: 0.2s;
+  transform: rotate(360deg);
 }
 
 .resources a,

@@ -1,8 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { TopicService } from 'src/app/services/topic.service';
 import { Topic } from 'src/app/shared/models/Topic';
-import { sample_topics } from 'src/data';
 
 @Component({
   selector: 'app-discussions',
@@ -10,9 +9,11 @@ import { sample_topics } from 'src/data';
   styleUrls: ['./discussions.component.css'],
 })
 export class DiscussionsComponent implements OnInit {
-  topics: Topic[] = [];
+  topics!: Topic[];
   constructor(private topicService: TopicService) {
-    this.topics = this.topicService.getAll();
+    topicService.getAll().subscribe((serverTopics) => {
+      this.topics = serverTopics;
+    });
   }
 
   ngOnInit(): void {}
