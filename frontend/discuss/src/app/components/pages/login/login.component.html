@@ -2,22 +2,30 @@
     <div class="details">
         <h2>Log in</h2>
 
-        <form>
+        <form [formGroup]="loginForm" (ngSubmit)="submit()">
             <div class="input-container">
                 <label for="" class="input-label">Username</label>
-                <input type="text" class="input">
-                <!-- <span>Please fill out this field.</span> -->
+                <input type="text" class="input" formControlName="username">
+                <ng-container *ngIf="isSubmitted && fc['username'].errors">
+                    <span *ngIf="fc['username'].errors['required']">Please fill out this field.</span>
+                    <span *ngIf="fc['username'].errors['minlength']">Make sure
+                        your username is valid!</span>
+                </ng-container>
             </div>
             <div class="input-container">
                 <label for="" class="input-label">Password</label>
-                <input type="password" class="input">
-                <!-- <span>Please fill out this field.</span> -->
+                <input type="password" class="input" formControlName="password">
+                <ng-container *ngIf="isSubmitted && fc['password'].errors">
+                    <span *ngIf="fc['password'].errors['required']">Please fill out this field.</span>
+                    <span *ngIf="fc['password'].errors['minlength']">Make sure
+                        your password is valid!</span>
+                </ng-container>
             </div>
             <div class="register">
                 New to Discuss?
                 <a routerLink="/register">Register here</a>
             </div>
-            <button>Log In</button>
+            <button type="submit">Log In</button>
         </form>
     </div>
 </div>

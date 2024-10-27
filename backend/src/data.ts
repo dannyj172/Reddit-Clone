@@ -115,3 +115,10 @@ export const sample_topics: any[] = [
     postsAmount: 54,
   },
 ];
+
+export const sample_users: any[] = [
+  {
+    username: "John",
+    password: "123123",
+  },
+];

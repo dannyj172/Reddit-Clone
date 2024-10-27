@@ -4,7 +4,7 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 99;
+  z-index: 999;
 }
 
 .container ul {
@@ -16,7 +16,7 @@ header {
   background-color: #0e1113;
   /* padding: 10px; */
   border-bottom: 1px solid rgba(218, 217, 217, 0.205);
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .logo {
@@ -67,14 +67,16 @@ header {
   margin-left: 7px;
 }
 
+nav {
+  margin-left: auto;
+}
+
 nav ul {
-  margin-right: 10px;
   display: flex;
 }
 
 nav ul li {
   margin: 0 10px 0 10px;
-  align-self: center;
 }
 
 .login-button {
@@ -83,6 +85,7 @@ nav ul li {
   padding: 10px 15px;
   cursor: pointer;
   opacity: 100%;
+  display: flex;
 }
 
 .login-button:hover {
@@ -133,6 +136,73 @@ nav a {
   background-color: #343d42;
 }
 
+.options {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 2px;
+  top: 75px;
+  color: white;
+}
+
+.options-button {
+  display: flex;
+  align-items: center;
+  width: 250px;
+  padding: 10px 0px 10px 20px;
+
+  background-color: #1b2024;
+  cursor: pointer;
+}
+
+.options-button p {
+  padding-left: 15px;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.options-button:first-child {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.options-button:last-child {
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.options-button:hover {
+  background-color: #252c31;
+}
+
+.profile-box {
+  display: flex;
+  align-items: center;
+}
+
+.profile-button {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-button p {
+  padding-top: 5px;
+  margin: 0;
+}
+
+.profile-button .view-profile-text {
+  font-size: 14px;
+}
+
+.profile-button .username-text {
+  font-size: 12px;
+  color: rgb(139, 139, 139);
+}
+
+.register-icon {
+  transform: rotate(180deg);
+}
+
 .input-container {
   height: fit-content;
   width: 600px;
@@ -143,7 +213,7 @@ nav a {
   background-color: #343d42a6;
   padding: 8px 10px;
   border-radius: 20px/50%;
-  margin-left: 170px;
+  margin-left: 24%;
 }
 
 .input-container svg {
