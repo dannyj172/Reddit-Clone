@@ -29,6 +29,7 @@ export class TopicComponent {
       postService
         .getAllPostsByTopicName(params['topicName'])
         .subscribe((serverPosts) => {
+          console.log(serverPosts);
           this.posts = serverPosts;
         });
     });
