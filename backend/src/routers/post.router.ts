@@ -1,38 +1,63 @@
 import { Router } from "express";
 import { sample_posts } from "../data";
+import asyncHandler from "express-async-handler";
+import { PostModel } from "../models/post.model";
 
 const router = Router();
 
-router.get("/", (req, res) => {
-  res.send(sample_posts);
-});
+router.get(
+  "/seed",
+  asyncHandler(async (req, res) => {
+    const postsCount = await PostModel.countDocuments();
+    if (postsCount > 0) {
+      res.send("Seed is already done!");
+      return;
+    }
 
-router.get("/:postId", (req, res) => {
-  const postId = req.params.postId;
-  const post = sample_posts.find((post) => post.postId == postId);
+    await PostModel.create(sample_posts);
+    res.send("Seed Is Done!");
+  })
+);
 
-  res.send(post);
-});
+router.get(
+  "/",
+  asyncHandler(async (req, res) => {
+    const posts = await PostModel.find().sort({ createdAt: "descending" });
+    res.send(posts);
+  })
+);
 
-router.get("/topic/:topicName", (req, res) => {
-  const topicName = req.params.topicName;
-  const posts = sample_posts.filter((post) =>
-    post.topic.toLowerCase().includes(topicName.toLowerCase())
-  );
+router.get(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const post = await PostModel.findById(req.params.id);
+    res.send(post);
+  })
+);
 
-  res.send(posts);
-});
+router.get(
+  "/topic/:topicName",
+  asyncHandler(async (req, res) => {
+    const topicRegex = new RegExp(req.params.topicName, "i");
+    const posts = await PostModel.find({ topic: { $regex: topicRegex } });
+    res.send(posts);
+  })
+);
 
-router.get("/search/:searchTerm", (req, res) => {
-  const searchTerm = req.params.searchTerm;
-  const posts = sample_posts.filter(
-    (post) =>
-      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.topic.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+router.get(
+  "/search/:searchTerm",
+  asyncHandler(async (req, res) => {
+    const searchRegex = new RegExp(req.params.searchTerm, "i"); //i = case insensitive
+    const posts = await PostModel.find({
+      $or: [
+        { title: { $regex: searchRegex } },
+        { description: { $regex: searchRegex } },
+        { topic: { $regex: searchRegex } },
+      ],
+    });
 
-  res.send(posts);
-});
+    res.send(posts);
+  })
+);
 
 export default router;

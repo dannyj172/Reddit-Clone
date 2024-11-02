@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PostService } from 'src/app/services/post.service';
+import { TimeFormatService } from 'src/app/services/timeformat.service';
 import { Post } from 'src/app/shared/models/Post';
 
 @Component({
@@ -14,6 +15,7 @@ export class HomeComponent {
 
   constructor(
     private postService: PostService,
+    private timeFormatService: TimeFormatService,
     activatedRoute: ActivatedRoute
   ) {
     let postsObservable: Observable<Post[]>;
@@ -27,8 +29,12 @@ export class HomeComponent {
       }
 
       postsObservable.subscribe((serverPosts) => {
-        this.posts = serverPosts;
+        this.posts = serverPosts; //posts.reverse when sorting from newest to oldest
       });
     });
+  }
+
+  timeFormat(time: string) {
+    return this.timeFormatService.timeFormat(time);
   }
 }

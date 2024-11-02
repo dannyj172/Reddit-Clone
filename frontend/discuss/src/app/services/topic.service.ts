@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Topic } from '../shared/models/Topic';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { TOPIC_BY_TOPICNAME_URL, TOPICS_URL } from '../shared/constants/urls';
 
 @Injectable({

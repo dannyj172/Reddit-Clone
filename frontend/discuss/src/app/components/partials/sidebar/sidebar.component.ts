@@ -10,9 +10,7 @@ export class SidebarComponent {
   resourcesOpen = false;
   recentOpen = false;
 
-  constructor(public router: Router) {
-    console.log(this.router.url.includes('/discussions'));
-  }
+  constructor(public router: Router) {}
 
   openResources(): void {
     this.resourcesOpen = !this.resourcesOpen;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PostService } from 'src/app/services/post.service';
+import { TimeFormatService } from 'src/app/services/timeformat.service';
 import { Post } from 'src/app/shared/models/Post';
 
 @Component({
@@ -15,11 +16,12 @@ export class PostComponent {
 
   constructor(
     activatedRoute: ActivatedRoute,
-    private postService: PostService
+    private postService: PostService,
+    private timeFormatService: TimeFormatService
   ) {
     activatedRoute.params.subscribe((params) => {
-      if (params['postId'])
-        postService.getPostById(params['postId']).subscribe((serverPost) => {
+      if (params['id'])
+        postService.getPostById(params['id']).subscribe((serverPost) => {
           this.post = serverPost;
         });
     });
@@ -27,5 +29,9 @@ export class PostComponent {
 
   optionsClick() {
     this.showOptions = !this.showOptions;
+  }
+
+  timeFormat(time: string) {
+    return this.timeFormatService.timeFormat(time);
   }
 }

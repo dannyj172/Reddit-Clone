@@ -1,7 +1,7 @@
 import { Comment } from './Comment';
 
 export class Post {
-  postId!: string;
+  id!: string;
   owner!: string;
   topic!: string;
   createdAt!: string;

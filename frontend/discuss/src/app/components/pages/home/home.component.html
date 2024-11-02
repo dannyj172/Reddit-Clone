@@ -10,7 +10,7 @@
     </div>
     <ul>
 
-        <li *ngFor="let post of posts" routerLink='/posts/{{post.postId}}'>
+        <li *ngFor="let post of posts" routerLink='/posts/{{post.id}}'>
             <div class="post-box">
                 <div class="topic-box">
                     <p routerLink="/topics/{{post.topic}}">{{post.topic}}</p>
@@ -19,7 +19,7 @@
                         <path fill-rule="evenodd" d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd">
                         </path>
                     </svg>
-                    <span>{{post.createdAt}} hr. ago</span>
+                    <span>{{timeFormat(post.createdAt)}}</span>
                 </div>
                 <h2>{{post.title}}</h2>
                 <p *ngIf="post.description" class="post-text">{{post.description}}</p>

@@ -12,7 +12,7 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'search/:searchTerm', component: HomeComponent },
-  { path: 'posts/:postId', component: PostComponent },
+  { path: 'posts/:id', component: PostComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'create-post', component: CreatePostComponent },

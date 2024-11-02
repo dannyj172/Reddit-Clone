@@ -1,18 +1,40 @@
 import { Router } from "express";
 import { sample_topics } from "../data";
+import asyncHandler from "express-async-handler";
+import { TopicModel } from "../models/topic.model";
 
 const router = Router();
 
-router.get("/", (req, res) => {
-  res.send(sample_topics);
-});
+router.get(
+  "/seed",
+  asyncHandler(async (req, res) => {
+    const topicsCount = await TopicModel.countDocuments();
+    if (topicsCount > 0) {
+      res.send("Seed is already done!");
+      return;
+    }
 
-router.get("/:topicName", (req, res) => {
-  const topicName = req.params.topicName;
+    await TopicModel.create(sample_topics);
+    res.send("Seed Is Done!");
+  })
+);
 
-  const topic = sample_topics.find((topic) => topic.topicName == topicName);
+router.get(
+  "/",
+  asyncHandler(async (req, res) => {
+    const topics = await TopicModel.find();
+    res.send(topics);
+  })
+);
 
-  res.send(topic);
-});
+router.get(
+  "/:topicName",
+  asyncHandler(async (req, res) => {
+    const topicName = req.params.topicName;
+
+    const topic = await TopicModel.findOne({ topicName: topicName });
+    res.send(topic);
+  })
+);
 
 export default router;

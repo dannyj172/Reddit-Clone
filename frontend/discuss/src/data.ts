@@ -3,7 +3,7 @@ import { Topic } from './app/shared/models/Topic';
 
 export const sample_posts: Post[] = [
   {
-    postId: '1',
+    id: '1',
     owner: 'Daniel',
     topic: 'Fashion',
     createdAt: '1',
@@ -21,7 +21,7 @@ export const sample_posts: Post[] = [
     ],
   },
   {
-    postId: '2',
+    id: '2',
     owner: 'Daniel',
     topic: 'Gaming',
     createdAt: '3',
@@ -32,7 +32,7 @@ export const sample_posts: Post[] = [
     comments: [],
   },
   {
-    postId: '3',
+    id: '3',
     owner: 'Ivan',
     topic: 'Food',
     createdAt: '3',
