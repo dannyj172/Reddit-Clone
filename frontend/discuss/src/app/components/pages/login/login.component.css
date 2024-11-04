@@ -46,11 +46,23 @@
   outline: none;
 }
 
+.input-box {
+  position: relative;
+}
+
+.error-icon {
+  right: 15px;
+  top: 11px;
+  position: absolute;
+  color: rgb(105, 0, 0);
+  filter: brightness(250%);
+}
+
 .input-container span {
   margin: 3px 0 10px 15px;
   font-weight: 100;
   font-size: 14px;
-  color: rgb(255, 0, 0);
+  color: rgb(255, 30, 0);
 }
 
 .register {
@@ -64,7 +76,7 @@ button {
   display: flex;
   width: 100%;
   margin-top: 50px;
-  background-color: #7139b1;
+  background-color: rgba(113, 57, 177, 0.85);
   border: none;
   padding: 15px 20px;
   border-radius: 20px;
@@ -72,11 +84,19 @@ button {
   justify-content: center;
   cursor: pointer;
   font-size: 14px;
-  opacity: 95%;
+  transition: 0.2s ease-in-out;
 }
 
 button:hover {
-  opacity: 100%;
+  background-color: rgba(113, 57, 177, 1);
+}
+
+.disabled-button {
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+.disabled-button:hover {
+  background-color: rgba(255, 0, 0, 1);
 }
 
 a {

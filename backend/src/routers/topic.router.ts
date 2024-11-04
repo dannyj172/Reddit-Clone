@@ -32,7 +32,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const topicName = req.params.topicName;
 
-    const topic = await TopicModel.findOne({ topicName: topicName });
+    const topic = await TopicModel.findOne({ topicName });
     res.send(topic);
   })
 );
